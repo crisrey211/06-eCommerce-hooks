@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header changeFilters={setFilters} />
       <Products products={filteredProducts} />
     </div>
   )
