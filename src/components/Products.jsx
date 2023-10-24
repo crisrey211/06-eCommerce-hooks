@@ -3,16 +3,18 @@ import { AddToCartIcon } from './Icons';
 import "./Products.css";
 
 export const Products = ({ products }) => {
-    console.log(products);
     return (
         <main className='products'>
             <ul>
-                {products.map((product) =>
+                {products.slice(0, 10).map((product) =>
                     <li key={product.id}>
                         <img src={product.thumbnail} />
-                        <strong>
-                            <div>{product.title}</div>
-                        </strong>
+                        <div>
+                            <strong>
+                                {product.title}
+                            </strong>
+                            - {product.price}$
+                        </div>
                         <button>
                             <AddToCartIcon />
                         </button>
