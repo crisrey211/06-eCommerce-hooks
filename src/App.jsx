@@ -2,6 +2,7 @@ import React from "react"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { Products } from "./components/Products"
+import { IS_DEVELOPMENT } from "./config"
 import { products as initialProducts } from "./mocks/products.json"
 
 function useFilters() {
@@ -15,20 +16,20 @@ function useFilters() {
       return product.price >= filters.minPrice && (product.category === filters.category || filters.category === "all")
     })
   }
-  return { setFilters, filterProducts }
+  return { setFilters, filterProducts, filters }
 }
 
 
 function App() {
   const [products] = React.useState(initialProducts)
-  const { filterProducts, setFilters } = useFilters()
+  const { filterProducts, setFilters, filters } = useFilters()
 
   const filteredProducts = filterProducts(products)
   return (
     <div>
       <Header changeFilters={setFilters} />
       <Products products={filteredProducts} />
-      <Footer />
+      {IS_DEVELOPMENT && <Footer filters={filters} />}
     </div>
   )
 }
