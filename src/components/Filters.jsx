@@ -1,19 +1,22 @@
 import React from 'react'
+import { FilterContext } from '../context/filters'
+import { useFilters } from '../hooks/useFilters'
 import "./Filters.css"
 
-export function Filters({ onChange }) {
+export function Filters() {
     const [minPrice, setMinPrice] = React.useState(0)
     const minPriceFilterId = React.useId()
     const categoryFilterId = React.useId()
+    const { setFilters } = useFilters()
 
     const handleChangeMinPrice = (ev) => {
         setMinPrice(ev.target.value)
-        onChange(prevState => ({ ...prevState, minPrice: ev.target.value }))
+        setFilters(prevState => ({ ...prevState, minPrice: ev.target.value }))
 
     }
 
     const handleChangeCategory = (ev) => {
-        onChange(prevState => ({ ...prevState, category: ev.target.value }))
+        setFilters(prevState => ({ ...prevState, category: ev.target.value }))
 
     }
 
