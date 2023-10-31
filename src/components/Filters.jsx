@@ -7,10 +7,9 @@ export function Filters() {
     const [minPrice, setMinPrice] = React.useState(0)
     const minPriceFilterId = React.useId()
     const categoryFilterId = React.useId()
-    const { setFilters } = useFilters()
+    const { filters, setFilters } = useFilters()
 
     const handleChangeMinPrice = (ev) => {
-        setMinPrice(ev.target.value)
         setFilters(prevState => ({ ...prevState, minPrice: ev.target.value }))
 
     }
@@ -30,8 +29,9 @@ export function Filters() {
                     min="0"
                     max="1000"
                     onChange={handleChangeMinPrice}
+                    value={filters.minPrice}
                 />
-                {minPrice}
+                {filters.minPrice}
             </div>
 
             <div>
