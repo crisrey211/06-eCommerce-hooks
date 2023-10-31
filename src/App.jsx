@@ -6,18 +6,19 @@ import { Products } from "./components/Products"
 import { IS_DEVELOPMENT } from "./config"
 import { useFilters } from "./hooks/useFilters"
 import { products as initialProducts } from "./mocks/products.json"
+import { CartProvider } from './context/cart'
 
 function App() {
   const { filterProducts, filters } = useFilters()
 
   const filteredProducts = filterProducts(initialProducts)
   return (
-    <div>
+    <CartProvider>
       <Header />
       <Cart />
       <Products products={filteredProducts} />
       {IS_DEVELOPMENT && <Footer />}
-    </div>
+    </CartProvider>
   )
 }
 
