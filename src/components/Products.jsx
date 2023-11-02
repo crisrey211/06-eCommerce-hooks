@@ -5,7 +5,7 @@ import { AddToCartIcon, RemoveFromCartIcon } from './Icons';
 import "./Products.css";
 
 export const Products = ({ products }) => {
-    const { addToCart, cart } = useCart()
+    const { addToCart, cart, removeFromCart } = useCart()
 
     const checkProductInCart = product => {
         return cart.some((item) => item.id === product.id)

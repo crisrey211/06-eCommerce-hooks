@@ -11,7 +11,7 @@ export function CartProvider({ children }) {
     const addToCart = (product) => {
         //check if the product is already int he cart
         const productInCartIndex = cart.findIndex(item => item.id === product.id)
-        if (productInCartIndex > 0) {
+        if (productInCartIndex >= 0) {
             // una forma sería usando structuredClone
             const newCart = structuredClone(cart)
             newCart[productInCartIndex].quantity += 1
